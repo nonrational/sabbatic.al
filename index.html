@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>sabbatic.al</title>
   <link rel="shortcut icon" type="image/png" href="assets/logo/favicon.ico"/>
   <!--
@@ -19,22 +21,36 @@
       font-size: .5em;
     }
 
+    html, body {
+      margin: 0;
+      height: 100%;
+    }
+
     html {
-      background:  url(https://media.giphy.com/media/l4hLyOGRJWNSR8QQ8/giphy.gif) no-repeat center center fixed;
+      background: #6b6a63;
+    }
+
+    /* iOS Safari ignores background-attachment: fixed, so a fixed layer
+       paints the GIF edge to edge instead of leaving bands at the top and bottom. */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: #6b6a63 url(https://media.giphy.com/media/l4hLyOGRJWNSR8QQ8/giphy.gif) no-repeat center center;
       background-size: cover;
-      min-height: 100%;
     }
 
     footer credit {
       position: absolute;
       right: 10px;
-      bottom: 10px;
+      bottom: calc(10px + env(safe-area-inset-bottom));
     }
 
     footer contact {
       position: absolute;
       left: 10px;
-      bottom: 10px;
+      bottom: calc(10px + env(safe-area-inset-bottom));
     }
   </style>
 </head>
